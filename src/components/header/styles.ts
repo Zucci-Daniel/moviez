@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {wp} from '../../configs/config';
+import {fs, wp} from '../../configs/config';
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,11 +8,11 @@ export const styles = StyleSheet.create({
     gap: wp(10),
   },
   back: {
-    marginLeft: wp(20),
+    marginLeft: wp(5),
   },
   header: {
-    fontSize: 24,
+    fontSize: fs(24),
     fontWeight: 'bold',
-    margin: 10,
+    margin: wp(10),
   },
 });

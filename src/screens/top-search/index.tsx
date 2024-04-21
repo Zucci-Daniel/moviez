@@ -15,7 +15,7 @@ const TopSearchesScreen = ({navigation}: GlobalScreenTypes) => {
   return (
     <>
       <View style={styles.container}>
-        <Header text={'Top Searches'} />
+        <Header text={'Top Searches'} show={false} />
         <SearchBar
           value={searchQuery}
           listening={usingVoice}

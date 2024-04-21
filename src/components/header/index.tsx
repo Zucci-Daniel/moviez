@@ -5,11 +5,11 @@ import {AppText} from '..';
 import {BackIcon} from '../../assets/svg';
 import {styles} from './styles';
 
-const Header = ({text}: {text: string}) => {
+const Header = ({text, show = true}: {text: string; show?: boolean}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      {navigation.canGoBack() && (
+      {show && (
         <TouchableOpacity
           style={styles.back}
           onPress={() => navigation.goBack()}>
