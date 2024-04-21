@@ -3,19 +3,19 @@ import {ScrollView, View} from 'react-native';
 import {AppImage, AppText} from '../../components';
 import AppActivityIndicator from '../../components/app-activity-indicator';
 import Header from '../../components/header';
-import {screenHeight} from '../../configs/Constants';
 import {wp} from '../../configs/config';
+import {screenHeight} from '../../configs/constants';
 import {useMovieDetails} from './logic';
 import {styles} from './styles';
 
 const MovieDetails = () => {
-  const {error, loading, movieDetails} = useMovieDetails();
+  const {loading, movieDetails} = useMovieDetails();
 
   const renderMovieDetails = () => {
     if (movieDetails) {
       return Object.entries(movieDetails).map(([key, value]) => {
         if (key === 'Ratings') {
-          return <Detail key={key} title={key} description={value[0].Value} />;
+          return <Detail key={key} title={key} description={value[0]?.Value} />;
         } else {
           return <Detail key={key} title={key} description={value} />;
         }

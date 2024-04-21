@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {DUMMY_IMAGE} from '../../configs/Constants';
+import {DUMMY_IMAGE} from '../../configs/constants';
 import {styles} from './styles';
 
 const AppImage = ({uri, height}: {uri: string; height?: number}) => {

@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import {ActivityIndicator, ViewStyle} from 'react-native';
-import {pallete} from '../../configs/Colors';
+import {pallete} from '../../configs/colors';
 
 const AppActivityIndicator: FunctionComponent<{
   style?: ViewStyle;

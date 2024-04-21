@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {pallete} from '../../configs/Colors';
+import {pallete} from '../../configs/colors';
+import {fs, wp} from '../../configs/config';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,15 +8,15 @@ export const styles = StyleSheet.create({
     backgroundColor: pallete.white,
   },
   header: {
-    fontSize: 24,
+    fontSize: fs(24),
     fontWeight: 'bold',
-    margin: 10,
+    margin: wp(10),
   },
   list: {
-    paddingHorizontal: 10,
+    paddingHorizontal: wp(10),
   },
   sub: {
-    height: 50,
+    height: wp(50),
     width: '100%',
     backgroundColor: pallete.primary,
   },

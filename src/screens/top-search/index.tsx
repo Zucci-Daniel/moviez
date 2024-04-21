@@ -4,7 +4,7 @@ import {EmptyIcon} from '../../assets/svg';
 import {MovieCard} from '../../components';
 import AppActivityIndicator from '../../components/app-activity-indicator';
 import Header from '../../components/header';
-import {GlobalScreenTypes} from '../../configs/GlobalScreenTypes';
+import {GlobalScreenTypes} from '../../configs/globalScreenTypes';
 import SearchFeature from '../../features/search';
 import {routes} from '../../routers/router-constants/routes';
 import {useTopSearch} from './logic';

@@ -1,28 +1,30 @@
 import {StyleSheet} from 'react-native';
+import {pallete} from '../../configs/colors';
+import {fs, wp} from '../../configs/config';
 
 export const styles = StyleSheet.create({
   card: {
-    marginVertical: 8,
-    backgroundColor: '#fff',
-    borderRadius: 8,
+    marginVertical: fs(8),
+    backgroundColor: pallete.white,
+    borderRadius: fs(8),
     overflow: 'hidden',
-    elevation: 3,
+    elevation: fs(3),
   },
   image: {
     width: '100%',
-    height: 150,
+    height: wp(150),
     resizeMode: 'cover',
-    backgroundColor: 'gray',
+    backgroundColor: pallete.grey,
   },
   title: {
-    fontSize: 18,
+    fontSize: fs(18),
     fontWeight: 'bold',
-    margin: 8,
+    margin: fs(8),
   },
   genres: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 8,
-    marginLeft: 8,
+    fontSize: fs(14),
+    color: pallete.grey,
+    marginBottom: wp(8),
+    marginLeft: wp(8),
   },
 });

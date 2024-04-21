@@ -2,6 +2,7 @@ import axios, {AxiosResponse} from 'axios';
 import {MovieDetails} from '../screens/movie-details/type';
 import {API_KEY} from '../secrets';
 import {SearchMoviesResponse} from './type';
+import {searchTerms} from '../configs/constants';
 
 const BASE_URL = `https://www.omdbapi.com/`;
 
@@ -22,18 +23,6 @@ const fetchMovies = async (
 };
 
 const getRandomListOfMovies = async (): Promise<SearchMoviesResponse> => {
-  const searchTerms = [
-    'Action',
-    'Comedy',
-    'Romance',
-    'Sci-Fi',
-    'Horror',
-    'Drama',
-    'Fantasy',
-    'Adventure',
-    'Thriller',
-    'Documentary',
-  ];
   const randomTerm =
     searchTerms[Math.floor(Math.random() * searchTerms.length)];
 

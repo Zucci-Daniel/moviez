@@ -1,8 +1,8 @@
 import React from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
 import {SearchIcon, SpeakingIcon, VoiceIcon} from '../../assets/svg';
-import {pallete} from '../../configs/Colors';
-import {iconSize} from '../../configs/Constants';
+import {pallete} from '../../configs/colors';
+import {detectTouch, iconSize} from '../../configs/constants';
 import {styles} from './styles';
 import {SearchBarProps} from './type';
 
@@ -26,6 +26,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChangeText={onChange}
         />
         <TouchableOpacity
+          hitSlop={detectTouch}
           onLongPress={onVoiceSearch}
           onPressOut={onEndVoiceSearch}>
           {listening ? (

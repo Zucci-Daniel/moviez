@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {pallete} from '../../configs/Colors';
+import {pallete} from '../../configs/colors';
 import {fs, wp} from '../../configs/config';
 
 export const styles = StyleSheet.create({
