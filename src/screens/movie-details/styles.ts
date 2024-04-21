@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: fs(18),
     fontWeight: 'bold',
+    color: pallete.secondary,
   },
   description: {
     fontSize: fs(14),

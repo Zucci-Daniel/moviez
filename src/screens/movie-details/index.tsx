@@ -46,7 +46,7 @@ export default MovieDetails;
 
 const Detail = ({description, title}: {title: string; description: any}) => {
   return (
-    <View style={{gap: wp(20)}}>
+    <View style={{gap: wp(10)}}>
       <AppText style={styles.title}>{title}</AppText>
       {typeof description === 'object' ? (
         Object.entries(description).map(([key, value]) => (
