@@ -11,7 +11,7 @@ import {useTopSearch} from './logic';
 import {styles} from './styles';
 
 const TopSearchesScreen = ({navigation}: GlobalScreenTypes) => {
-  const {error, loading, movies} = useTopSearch();
+  const {loading, movies} = useTopSearch();
 
   return (
     <>
@@ -21,9 +21,11 @@ const TopSearchesScreen = ({navigation}: GlobalScreenTypes) => {
         {loading ? <AppActivityIndicator /> : <></>}
         <FlatList
           extraData={movies}
-          ListEmptyComponent={<EmptyIcon style={{alignSelf: 'center'}} />}
+          ListEmptyComponent={
+            !loading ? <EmptyIcon style={{alignSelf: 'center'}} /> : <></>
+          }
           data={movies}
-          keyExtractor={(item, index) => `${index}`}
+          keyExtractor={(_, index) => `${index}`}
           renderItem={({item}) => (
             <MovieCard
               movie={item}

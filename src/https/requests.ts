@@ -74,7 +74,6 @@ const getSingleMovie = async (imdbID: string): Promise<MovieDetails> => {
     if (response.data.Response === 'False') {
       throw new Error(response.data.Error);
     }
-    console.log(JSON.stringify(response.data, null, 2), ' see only');
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

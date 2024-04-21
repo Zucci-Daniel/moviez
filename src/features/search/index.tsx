@@ -3,17 +3,16 @@ import {SearchBar} from '../../components';
 import {useSearchFeature} from './logic';
 
 const SearchFeature = () => {
-  const {searchQuery, setSearchQuery, setUsingVoice, usingVoice} =
+  const {searchQuery, setSearchQuery, setUsingVoice, listening} =
     useSearchFeature();
   return (
     <SearchBar
       value={searchQuery}
-      listening={usingVoice}
-      placeholder="Search..."
+      listening={listening}
+      placeholder="Search by typing or use voice..."
       onChange={setSearchQuery}
-      onVoiceSearch={() => {
-        setUsingVoice(!usingVoice);
-      }}
+      onVoiceSearch={() => setUsingVoice(true)}
+      onEndVoiceSearch={() => setUsingVoice(false)}
     />
   );
 };

@@ -12,6 +12,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onVoiceSearch,
   listening,
   value,
+  onEndVoiceSearch,
 }) => {
   return (
     <>
@@ -20,10 +21,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <TextInput
           value={value}
           placeholder={placeholder}
+          placeholderTextColor={pallete.grey}
           style={styles.input}
           onChangeText={onChange}
         />
-        <TouchableOpacity onPress={onVoiceSearch}>
+        <TouchableOpacity
+          onLongPress={onVoiceSearch}
+          onPressOut={onEndVoiceSearch}>
           {listening ? (
             <SpeakingIcon {...iconSize} fill={pallete.primary} />
           ) : (
