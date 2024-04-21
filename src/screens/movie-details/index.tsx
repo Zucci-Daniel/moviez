@@ -1,38 +1,62 @@
-import {useRoute} from '@react-navigation/native';
-import React, {FunctionComponent} from 'react';
-import {View} from 'react-native';
+import React from 'react';
+import {ScrollView, View} from 'react-native';
 import {AppImage, AppText} from '../../components';
+import AppActivityIndicator from '../../components/app-activity-indicator';
 import Header from '../../components/header';
-import {Movie} from '../../components/movie-card/type';
 import {screenHeight} from '../../configs/Constants';
 import {wp} from '../../configs/config';
+import {useMovieDetails} from './logic';
 import {styles} from './styles';
 
-const MovieDetails: FunctionComponent = () => {
-  const route = useRoute();
-  const {params} = route;
-  const {item} = params as {item: Movie};
+const MovieDetails = () => {
+  const {error, loading, movieDetails} = useMovieDetails();
 
+  const renderMovieDetails = () => {
+    if (movieDetails) {
+      return Object.entries(movieDetails).map(([key, value]) => {
+        if (key === 'Ratings') {
+          return <Detail key={key} title={key} description={value[0].Value} />;
+        } else {
+          return <Detail key={key} title={key} description={value} />;
+        }
+      });
+    } else null;
+  };
   return (
-    <View style={styles.container}>
-      <Header text={`Details of ${item.title}`} />
-      <View>
-        <AppImage uri={item.image} height={screenHeight / 3} />
-      </View>
-      <View style={styles.writeUps}>
-        <Detail title={item.title} description="dsfsfsdfsdfsdf" />
-      </View>
-    </View>
+    <ScrollView style={styles.container}>
+      <Header text={`Details`} />
+      {loading ? (
+        <AppActivityIndicator />
+      ) : (
+        <>
+          <View>
+            <AppImage
+              uri={`${movieDetails?.Poster}`}
+              height={screenHeight / 3}
+            />
+          </View>
+          <View style={styles.writeUps}>{renderMovieDetails()}</View>
+        </>
+      )}
+    </ScrollView>
   );
 };
 
 export default MovieDetails;
 
-const Detail = ({description, title}: {title: string; description: string}) => {
+const Detail = ({description, title}: {title: string; description: any}) => {
   return (
     <View style={{gap: wp(20)}}>
       <AppText style={styles.title}>{title}</AppText>
-      <AppText style={styles.description}>{description}</AppText>
+      {typeof description === 'object' ? (
+        Object.entries(description).map(([key, value]) => (
+          <View key={key}>
+            <AppText style={styles.description}>{`${key}: ${value}`}</AppText>
+          </View>
+        ))
+      ) : (
+        <AppText style={styles.description}>{description}</AppText>
+      )}
     </View>
   );
 };

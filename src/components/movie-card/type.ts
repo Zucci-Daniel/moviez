@@ -3,8 +3,9 @@ export interface MovieCardProps {
   onPress?: () => void;
 }
 export interface Movie {
-  id: number;
-  title: string;
-  genres: string;
-  image: string;
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
 }

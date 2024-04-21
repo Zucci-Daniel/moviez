@@ -8,9 +8,9 @@ import {MovieCardProps} from './type';
 const MovieCard: React.FC<MovieCardProps> = ({movie, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
-      <AppImage uri={movie.image} />
-      <AppText style={styles.title}>{movie.title}</AppText>
-      <AppText style={styles.genres}>{movie.genres}</AppText>
+      <AppImage uri={movie.Poster} />
+      <AppText style={styles.title}>{movie.Title}</AppText>
+      <AppText style={styles.genres}>{movie.Type}</AppText>
     </TouchableOpacity>
   );
 };

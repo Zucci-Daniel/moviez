@@ -8,6 +8,9 @@ export const imageFit: any = {
   height: '100%',
 };
 
+export const DUMMY_IMAGE =
+  'https://cdn.pixabay.com/photo/2021/01/03/21/28/mannequin-5885693_1280.png';
+
 export const BRAND_NAME = 'Health';
 
 export const HIT_SLOP = {top: 20, right: 20, left: 20, bottom: 20};
