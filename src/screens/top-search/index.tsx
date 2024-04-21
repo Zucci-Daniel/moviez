@@ -1,18 +1,21 @@
 import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {EmptyIcon} from '../../assets/svg';
-import {AppText, MovieCard, SearchBar} from '../../components';
+import {MovieCard, SearchBar} from '../../components';
+import Header from '../../components/header';
 import {Movie} from '../../components/movie-card/type';
+import {GlobalScreenTypes} from '../../configs/GlobalScreenTypes';
+import {routes} from '../../routers/router-constants/routes';
 import {styles} from './styles';
 
-const TopSearchesScreen: React.FC = () => {
+const TopSearchesScreen = ({navigation}: GlobalScreenTypes) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [usingVoice, setUsingVoice] = useState(false);
 
   return (
     <>
       <View style={styles.container}>
-        <AppText style={styles.header}>Top Searches</AppText>
+        <Header text={'Top Searches'} />
         <SearchBar
           value={searchQuery}
           listening={usingVoice}
@@ -26,7 +29,12 @@ const TopSearchesScreen: React.FC = () => {
           ListEmptyComponent={<EmptyIcon style={{alignSelf: 'center'}} />}
           data={movies}
           keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => <MovieCard movie={item} />}
+          renderItem={({item}) => (
+            <MovieCard
+              movie={item}
+              onPress={() => navigation.navigate(routes.MOVIE_DETAILS, {item})}
+            />
+          )}
           contentContainerStyle={styles.list}
         />
       </View>

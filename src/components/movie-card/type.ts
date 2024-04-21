@@ -1,5 +1,6 @@
 export interface MovieCardProps {
   movie: Movie;
+  onPress?: () => void;
 }
 export interface Movie {
   id: number;
