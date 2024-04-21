@@ -5,6 +5,7 @@ import {pallete} from '../../configs/colors';
 import {detectTouch, iconSize} from '../../configs/constants';
 import {styles} from './styles';
 import {SearchBarProps} from './type';
+import Listen from '../listening';
 
 const SearchBar: React.FC<SearchBarProps> = ({
   placeholder,
@@ -36,7 +37,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           )}
         </TouchableOpacity>
       </View>
-      {listening && <View style={styles.sub}></View>}
+      {listening && <Listen />}
     </>
   );
 };

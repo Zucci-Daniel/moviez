@@ -1,6 +1,5 @@
 import Voice, {SpeechResultsEvent} from '@react-native-voice/voice';
 import {useEffect, useState} from 'react';
-import {Alert} from 'react-native';
 
 export const useVoiceSearch = ({
   startVoiceCallback = () => null,
@@ -65,7 +64,6 @@ export const useVoiceSearch = ({
   const onSpeechErrorHandler = () => {
     setUsingVoice(false);
     setListening(false);
-    Alert.alert('Failed!', "you can't use voice right now");
   };
 
   return {

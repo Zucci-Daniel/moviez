@@ -16,9 +16,10 @@ export const styles = StyleSheet.create({
   input: {
     fontSize: fs(16),
     flex: 1,
+    color: pallete.black,
   },
   sub: {
-    height: 50,
+    height: undefined,
     width: '90%',
     alignSelf: 'center',
     backgroundColor: pallete.primary,
