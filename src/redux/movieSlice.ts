@@ -44,7 +44,10 @@ export const movieSlice = createSlice({
   initialState,
   reducers: {
     resetMovieStore: (state: MovieStore) => {
-      state = defaultState;
+      state.movies = [];
+      state.error = false;
+      state.loading = false;
+      state.movieDetails = null;
     },
   },
   extraReducers: builder => {

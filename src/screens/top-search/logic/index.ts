@@ -8,7 +8,7 @@ export const useTopSearch = () => {
   const {movies, error, loading} = useSelector(selectMovieState);
 
   useEffect(() => {
-    dispatch(requestRandomMovies());
+    dispatch(requestRandomMovies(1));
   }, []);
 
   return {
