@@ -4,58 +4,40 @@ import {
   getRandomListOfMovies,
   getSingleMovie,
 } from '../https/requests';
-import {Movie, SearchMoviesResponse} from '../https/type';
+import {SearchMoviesResponse} from '../https/type';
 import {MovieDetails} from '../screens/movie-details/type';
 import {RootState} from './store';
+import {MovieStore} from './type';
 
-interface MovieStore {
-  movies: Array<Movie>;
-  movieDetails: MovieDetails | null;
-  loading: boolean;
-  error: boolean;
-}
 const defaultState = {
   movies: [],
   loading: false,
   error: false,
   movieDetails: null,
 };
-
 const initialState: MovieStore = defaultState;
 
-export const requestRandomMovies = createAsyncThunk(
-  'movie/requestRandomMovies',
-  async (_, thunkAPI) => {
-    try {
-      const response = await getRandomListOfMovies();
-      return response;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  },
+const createAsyncThunkAction = (apiFunction: Function) => {
+  return createAsyncThunk(
+    `movie/${apiFunction.name}`,
+    async (arg: any, thunkAPI) => {
+      try {
+        const response = await apiFunction(arg);
+        return response;
+      } catch (error: any) {
+        const serializableError =
+          typeof error === 'string' ? error : 'An unexpected error occurred.';
+        return thunkAPI.rejectWithValue(serializableError);
+      }
+    },
+  );
+};
+
+export const requestRandomMovies = createAsyncThunkAction(
+  getRandomListOfMovies,
 );
-export const requestSearchMovies = createAsyncThunk(
-  'movie/requestSearchMovies',
-  async (searchQuery: string, thunkAPI) => {
-    try {
-      const response = await getListOfMovies(searchQuery);
-      return response;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue('An unexpected error occurred.');
-    }
-  },
-);
-export const requestSingleMovie = createAsyncThunk(
-  'movie/requestSingleMovie',
-  async (id: string, thunkAPI) => {
-    try {
-      const response = await getSingleMovie(id);
-      return response;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  },
-);
+export const requestSearchMovies = createAsyncThunkAction(getListOfMovies);
+export const requestSingleMovie = createAsyncThunkAction(getSingleMovie);
 
 export const movieSlice = createSlice({
   name: 'movie',
