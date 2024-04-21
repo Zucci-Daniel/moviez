@@ -9,7 +9,7 @@ const SearchFeature = () => {
     <SearchBar
       value={searchQuery}
       listening={listening}
-      placeholder="Search by typing or use voice..."
+      placeholder="Search or long press icon for voice"
       onChange={setSearchQuery}
       onVoiceSearch={() => setUsingVoice(true)}
       onEndVoiceSearch={() => setUsingVoice(false)}

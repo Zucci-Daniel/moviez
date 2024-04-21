@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: wp(20),
+    gap: wp(10),
   },
   input: {
     fontSize: fs(16),
