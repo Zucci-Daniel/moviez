@@ -41,7 +41,7 @@ export const requestSearchMovies = createAsyncThunk(
       const response = await getListOfMovies(searchQuery);
       return response;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue('An unexpected error occurred.');
     }
   },
 );
