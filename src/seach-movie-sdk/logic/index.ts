@@ -13,13 +13,11 @@ export const API_KEY = `5cbf161f`;
  */
 export const useSearchSdk = () => {
   const [movies, seMovies] = useState<Array<Movie>>([]);
+  const [singleMovie, setSingleMovie] = useState<MovieDetails>();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const debouncedSearchQuery = useDebounce(searchQuery, 100);
 
-  const fetchMovies = async (
-    searchTerm: string,
-    page: number = 1,
-  ): Promise<SearchMoviesResponse> => {
+  const fetchMovies = async (searchTerm: string, page: number = 1) => {
     const response: AxiosResponse<SearchMoviesResponse> = await axios.get(
       BASE_URL,
       {params: {apikey: API_KEY, s: searchTerm, page}},
@@ -28,22 +26,20 @@ export const useSearchSdk = () => {
     if (response.data.Response === 'False') {
       throw new Error(response.data.Error);
     }
-
-    return response.data;
+    seMovies(response.data.Search);
   };
 
-  const getRandomListOfMovies = async (): Promise<SearchMoviesResponse> => {
+  const getRandomListOfMovies = async () => {
     const randomTerm =
       searchTerms[Math.floor(Math.random() * searchTerms.length)];
 
     return fetchMovies(randomTerm, 1);
   };
 
-  const getListOfMovies = async (
-    searchTerm: string,
-  ): Promise<SearchMoviesResponse> => fetchMovies(searchTerm, 1);
+  const getListOfMovies = async (searchTerm: string) =>
+    fetchMovies(searchTerm, 1);
 
-  const getSingleMovie = async (imdbID: string): Promise<MovieDetails> => {
+  const getSingleMovie = async (imdbID: string) => {
     const response = await axios.get(BASE_URL, {
       params: {apikey: API_KEY, i: imdbID},
     });
@@ -51,8 +47,7 @@ export const useSearchSdk = () => {
     if (response.data.Response === 'False') {
       throw new Error(response.data.Error);
     }
-
-    return response.data;
+    setSingleMovie(response.data);
   };
 
   useEffect(() => {
@@ -69,5 +64,6 @@ export const useSearchSdk = () => {
     seMovies,
     searchQuery,
     setSearchQuery,
+    singleMovie,
   };
 };
