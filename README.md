@@ -1,8 +1,11 @@
+NOTE:
+I opted not to utilize the recommended movie database endpoint in the assessment instructions due to its limited functionality on the server side, which is outside my control. Instead, I have chosen to utilize an alternative movie database. The app works seamlessly on both Android and iOS platforms, and as an added bonus, I have included a voice search feature for movies. Enjoy!
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
